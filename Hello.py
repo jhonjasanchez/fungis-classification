@@ -35,7 +35,7 @@ def run():
     )
 
     # Upload la imagen del hongo
-    uploaded_file = st.file_uploader("Seleccione una imagen/foto de un hongo: ", type="jpg")
+    uploaded_file = st.file_uploader("Seleccione una imagen/foto de un hongo: ", type=("jpg", "png"))
 
     if uploaded_file is not None:
         # Display la imagen del hongo
