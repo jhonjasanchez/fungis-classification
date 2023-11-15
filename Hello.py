@@ -13,11 +13,13 @@ LOGGER = get_logger(__name__)
 
 def run():
     st.set_page_config(
-        page_title="Hello",
+        page_title="Hongos App",
         page_icon="👋",
     )
 
-    st.write("# Welcome to Streamlit! 👋")
+    st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">', unsafe_allow_html=True)
+
+    st.write("# Clasificación de Hongos! <i class='fas fa-mushroom'></i>")
 
     st.markdown(
         """
