@@ -14,7 +14,7 @@ LOGGER = get_logger(__name__)
 def run():
     st.set_page_config(
         page_title="Hongos App",
-        page_icon="👋",
+        page_icon=":mushroom:",
     )
 
     st.write("# Clasificación de Hongos! :mushroom:")
@@ -23,9 +23,9 @@ def run():
         """
         El objetivo de nuestra aplicación Web será el de clasificar los hongos en tres
         tipos de clases:.
-        - <b>Edible</b>: Comestibles.
-        - <b>Inedible</b>: No comestibles, aunque no son venenosos, pueden generar alergias o por su sabor no se recomienda su consumo.
-        - <b>Poisonous</b>: Venenosos, por lo tanto representan un peligro vital si se consumen. 
+        - **Edible**: Comestibles.
+        - **Inedible**: No comestibles, aunque no son venenosos, pueden generar alergias o por su sabor no se recomienda su consumo.
+        - **Poisonous**: Venenosos, por lo tanto representan un peligro vital si se consumen. 
 
         ### Want to learn more?
         - Check out [streamlit.io](https://streamlit.io)
