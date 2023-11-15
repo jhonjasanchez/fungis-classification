@@ -17,9 +17,7 @@ def run():
         page_icon="👋",
     )
 
-    st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">', unsafe_allow_html=True)
-
-    st.write("# Clasificación de Hongos! <i class='fas fa-mushroom'></i>")
+    st.write("# Clasificación de Hongos! :mushroom:")
 
     st.markdown(
         """
