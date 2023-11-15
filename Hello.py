@@ -39,7 +39,7 @@ def run():
 
     if uploaded_file is not None:
         # Display la imagen del hongo
-        st.image(uploaded_file, caption="Imagen del hongo.", use_column_width=True)
+        st.image(uploaded_file, caption="Imagen del hongo seleccionado.", use_column_width=True)
 
 
 if __name__ == "__main__":
