@@ -34,6 +34,13 @@ def run():
     """
     )
 
+    # Upload la imagen del hongo
+    uploaded_file = st.file_uploader("Seleccione una imagen/foto de un hongo: ", type="jpg")
+
+    if uploaded_file is not None:
+        # Display la imagen del hongo
+        st.image(uploaded_file, caption="Imagen del hongo.", use_column_width=True)
+
 
 if __name__ == "__main__":
     run()
