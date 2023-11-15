@@ -27,15 +27,10 @@ def run():
         - **Inedible**: No comestibles, aunque no son venenosos, pueden generar alergias o por su sabor no se recomienda su consumo.
         - **Poisonous**: Venenosos, por lo tanto representan un peligro vital si se consumen. 
 
-        ### Want to learn more?
-        - Check out [streamlit.io](https://streamlit.io)
-        - Jump into our [documentation](https://docs.streamlit.io)
-        - Ask a question in our [community
-          forums](https://discuss.streamlit.io)
-        ### See more complex demos
-        - Use a neural net to [analyze the Udacity Self-driving Car Image
-          Dataset](https://github.com/streamlit/demo-self-driving)
-        - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+        ### Nuestro dataset
+        - Kaggle [Mushrooms images classification](https://www.kaggle.com/datasets/daniilonishchenko/mushrooms-images-classification-215)
+        - Wildfood [Mushroom Guide](https://www.wildfooduk.com)
+        - iNaturalist [Taxonomía](https://www.inaturalist.org/taxa/47170-Fungi)
     """
     )
 
