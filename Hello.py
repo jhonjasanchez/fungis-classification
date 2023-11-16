@@ -7,29 +7,9 @@
 
 import streamlit as st
 from streamlit.logger import get_logger
-import base64
 
 LOGGER = get_logger(__name__)
 
-
-def get_base64_of_bin_file(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-def set_png_as_page_bg(png_file):
-    bin_str = get_base64_of_bin_file(png_file)
-    page_bg_img = '''
-    <style>
-    body {
-    background-image: url("data:image/jpg;base64,%s");
-    background-size: cover;
-    }
-    </style>
-    ''' % bin_str
-    
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-    return
 
 def run():
     st.set_page_config(
@@ -37,7 +17,8 @@ def run():
         page_icon=":mushroom:",
     )
 
-    set_png_as_page_bg('background.jpg')
+    image_url = "background.jpg"
+    st.image(image_url, caption="", use_column_width=True)
 
     st.write("# Clasificación de Hongos! :mushroom:")
 
