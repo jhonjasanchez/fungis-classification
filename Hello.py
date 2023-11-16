@@ -17,6 +17,18 @@ def run():
         page_icon=":mushroom:",
     )
 
+    css = """
+    <style>
+        body {
+            background-image: url('https://images6.alphacoders.com/877/877243.jpg');
+            background-size: cover;
+        }
+    </style>
+    """
+
+    # Display the CSS in the Streamlit app
+    st.markdown(css, unsafe_allow_html=True)
+
     st.write("# Clasificación de Hongos! :mushroom:")
 
     st.markdown(
