@@ -37,7 +37,7 @@ def run():
         page_icon=":mushroom:",
     )
 
-    set_png_as_page_bg('/workspaces/fungis-classification/background.jpg')
+    set_png_as_page_bg('background.jpg')
 
     st.write("# Clasificación de Hongos! :mushroom:")
 
