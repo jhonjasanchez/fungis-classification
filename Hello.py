@@ -41,6 +41,12 @@ def run():
         # Display la imagen del hongo
         st.image(uploaded_file, caption="Imagen del hongo seleccionado.", use_column_width=True)
 
-
+    if st.button("Clasificar !!!"):
+      st.write("Este hongo es: VENENOSO !!! :skull_and_crossbones:")
+      st.markdown(
+          """
+            Recomendamos dar una mirada en Wildfood [Hongos venenosos](https://www.wildfooduk.com/mushroom-guide/?mushroom_type=poisonous)
+          """
+      )
 if __name__ == "__main__":
     run()
