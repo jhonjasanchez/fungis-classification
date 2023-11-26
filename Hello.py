@@ -49,7 +49,7 @@ def run():
 
     if st.button("Clasificar !!!"):
       # Ruta al modelo entrenado
-      model_path = "yolov5_model.pkl"
+      model_path = "yolov5_modelf.pkl"
 
       # Cargar el modelo
       try:
