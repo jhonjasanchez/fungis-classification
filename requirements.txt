@@ -5,3 +5,4 @@ pydeck
 streamlit
 joblib
 torch
+opencv-python-headless
