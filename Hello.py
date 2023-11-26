@@ -52,7 +52,7 @@ def run():
       model_path = "yolov5_model.pkl"
 
       # Cargar el modelo
-      model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
+      model = torch.load(model_path)
 
       st.write("Este hongo es: **VENENOSO** !!! :skull_and_crossbones:")
       st.markdown(
