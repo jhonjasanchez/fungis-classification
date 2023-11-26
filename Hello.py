@@ -48,7 +48,12 @@ def run():
         st.image(uploaded_file, caption="Imagen del hongo seleccionado.", use_column_width=True)
 
     if st.button("Clasificar !!!"):
-      modelo = joblib.load('yolov5_model.pkl')
+      # Ruta al modelo entrenado
+      model_path = "yolov5_model.pkl"
+
+      # Cargar el modelo
+      model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
+
       st.write("Este hongo es: **VENENOSO** !!! :skull_and_crossbones:")
       st.markdown(
           """
