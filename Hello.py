@@ -7,7 +7,7 @@
 
 import streamlit as st
 import joblib
-
+import torch
 
 from streamlit.logger import get_logger
 
