@@ -52,7 +52,11 @@ def run():
       model_path = "yolov5_model.pkl"
 
       # Cargar el modelo
-      model = torch.load(model_path)
+      try:
+            model = torch.load(model_path)
+            st.write("Model loaded successfully.")
+      except Exception as e:
+            st.write("Error loading model:", e)
 
       st.write("Este hongo es: **VENENOSO** !!! :skull_and_crossbones:")
       st.markdown(
