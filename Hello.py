@@ -74,7 +74,7 @@ def run():
             # Print the attributes
             st.write("Attributes of results:")
             for attribute in attributes:
-                st.write(attribute)
+                st.write(getattr(results, attribute, None))
 
       except Exception as e:
             st.write("Error loading model:", e)
