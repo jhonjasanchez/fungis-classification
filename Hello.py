@@ -53,6 +53,8 @@ def run():
 
       # Cargar el modelo
       try:
+            # Install YOLOv5
+            st.code("pip install git+https://github.com/ultralytics/yolov5.git")
             model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
             st.write("Model loaded successfully.")
             #with torch.no_grad():
