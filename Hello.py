@@ -7,7 +7,7 @@
 
 import streamlit as st
 import torch
-from yolov5.utils.general import non_max_suppression, scale_coords, xyxy2xywh
+
 
 from streamlit.logger import get_logger
 
@@ -69,7 +69,7 @@ def run():
             st.write('path: ',image_path)
             results = model(image_path)
             
-            resultados = non_max_suppression(results[0], conf_thres=0.5, iou_thres=0.4)
+            st.write(results)
 
             #prediction_list = getattr(results, 'pred', None)
             #st.write("prediction_list: ", prediction_list)
