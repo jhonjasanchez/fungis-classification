@@ -8,6 +8,7 @@
 import streamlit as st
 import torch
 from torchvision.ops import nms
+from PIL import Image, ImageDraw
 
 from streamlit.logger import get_logger
 
@@ -78,6 +79,27 @@ def run():
             scores = results.xyxy[0][:, 4]
             keep = nms(boxes, scores, iou_threshold)
             st.write('boxes: ', boxes)
+
+            original_image = Image.open(image_path).convert("RGB")
+
+            # Check if there are any detections
+            if len(keep) > 0:
+                # Draw bounding boxes on the image
+                image_with_boxes = original_image.copy()
+                draw = ImageDraw.Draw(image_with_boxes)
+
+                # Iterate through the kept indices and draw bounding boxes
+                for idx in keep:
+                    box = boxes[idx]
+                    conf = scores[idx]
+                    label = f"Confidence: {conf:.2f}"
+                    draw.rectangle(box, outline="red", width=3)
+                    draw.text((box[0], box[1]), label, fill="red")
+
+                # Display the image with bounding boxes
+                st.image(image_with_boxes, caption="Image with Bounding Boxes", use_column_width=True)
+            else:
+                st.write("No detections found.")
 
             #prediction_list = getattr(results, 'pred', None)
             #st.write("prediction_list: ", prediction_list)
