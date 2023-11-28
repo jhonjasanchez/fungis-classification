@@ -67,6 +67,7 @@ def run():
             image_path = save_uploaded_image(uploaded_file)
             st.write('path: ',image_path)
             results = model(image_path)
+            st.write(results)
 
       except Exception as e:
             st.write("Error loading model:", e)
