@@ -69,12 +69,7 @@ def run():
             results = model(image_path)
             st.write(results)
 
-            if results.find('Poisonous') != -1:
-                st.write(f"Este hongo es venenoso.")
-            if results.find('Edible') != -1:
-                st.write(f"Este hongo es comestible.")
-            if results.find('Inedible') != -1:
-                st.write(f"Este hongo no es comestible.")
+            st.write('results[0]: ', results[0])
 
       except Exception as e:
             st.write("Error loading model:", e)
