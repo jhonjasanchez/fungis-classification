@@ -7,6 +7,7 @@
 
 import streamlit as st
 import torch
+from torchvision.ops import nms
 
 from streamlit.logger import get_logger
 
@@ -70,7 +71,12 @@ def run():
             
             st.write(results)
 
+            conf_threshold = 0.5
+            iou_threshold = 0.4
+
             boxes = results.xyxy[0][:, :4]
+            scores = results.xyxy[0][:, 4]
+            keep = nms(boxes, scores, iou_threshold)
             st.write('boxes: ', boxes)
 
             #prediction_list = getattr(results, 'pred', None)
