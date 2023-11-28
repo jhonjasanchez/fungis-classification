@@ -61,7 +61,7 @@ def run():
     if st.button("Clasificar !!!"):
       # Ruta al modelo entrenado
       model_path = "best.pt"
-
+      class_name = ''
       # Cargar el modelo
       try:
             model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
@@ -95,7 +95,7 @@ def run():
                     box = tuple(map(int, boxes[idx]))
                     conf = scores[idx]
                     class_index = int(class_indices[idx])
-                    class_name = ''
+                    
                     if class_index == 0:
                         class_name = 'Comestible'
                     if class_index == 1:
@@ -104,7 +104,7 @@ def run():
                         class_name = 'Venenoso'
                     label = f"{class_name} Confidence: {conf:.2f}"
                     draw.rectangle(box, outline="red", width=3)
-                    draw.text((box[0], box[1]), label, fill="red")
+                    draw.text((box[0], box[1]), label, fill="white")
 
                 # Display the image with bounding boxes
                 st.image(image_with_boxes, caption="Image with Bounding Boxes", use_column_width=True)
@@ -116,12 +116,26 @@ def run():
 
       except Exception as e:
             st.write("Error loading model:", e)
-
-      st.write("Este hongo es: **VENENOSO** !!! :skull_and_crossbones:")
-      st.markdown(
-          """
-            Recomendamos dar una mirada en Wildfood [Hongos venenosos](https://www.wildfooduk.com/mushroom-guide/?mushroom_type=poisonous)
-          """
-      )
+      if class_name == 'Venenoso':
+            st.write("Este hongo es: **VENENOSO** !!! :skull_and_crossbones:")
+            st.markdown(
+                """
+                    Recomendamos dar una mirada en Wildfood [Hongos venenosos](https://www.wildfooduk.com/mushroom-guide/?mushroom_type=poisonous)
+                """
+            )
+      if class_name == 'Comestible':
+            st.write("Este hongo es: **COMESTIBLE** !!! 🍕")
+            st.markdown(
+                """
+                    Recomendamos dar una mirada en Wildfood [Hongos Comestibles](https://www.wildfooduk.com/mushroom-guide/?mushroom_type=edible)
+                """
+            )
+      if class_name == 'No comestible':
+            st.write("Este hongo es: **NO COMESTIBLE** !!! ❌")
+            st.markdown(
+                """
+                    Recomendamos dar una mirada en Wildfood [Hongos no comestibles](https://www.wildfooduk.com/mushroom-guide/?mushroom_type=inedible)
+                """
+            )
 if __name__ == "__main__":
     run()
