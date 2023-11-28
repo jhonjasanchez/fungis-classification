@@ -10,7 +10,7 @@ import torch
 from PIL import Image, ImageDraw
 from torchvision.transforms import functional as F
 from yolov5.utils.general import non_max_suppression
-from yolov5.utils.plots import plot_one_box
+
 
 from streamlit.logger import get_logger
 
@@ -29,15 +29,7 @@ def inference(image, model):
     
     return results[0] if results else None
 
-# Function to draw bounding boxes on the image
-def draw_boxes(image, boxes):
-    draw = ImageDraw.Draw(image)
 
-    for box in boxes:
-        label = int(box[5])
-        plot_one_box(box, draw, label=label, color='red')
-
-    return image
 
 def run():
     st.set_page_config(
@@ -85,12 +77,6 @@ def run():
 
              # Display the original image
             st.image(image, caption="Original Image", use_column_width=True)
-
-            if results:
-                # Draw bounding boxes on the image
-                image_with_boxes = draw_boxes(image.copy(), results[:, :5])
-                st.image(image_with_boxes, caption="Image with Bounding Boxes", use_column_width=True)
-
 
       except Exception as e:
             st.write("Error loading model:", e)
