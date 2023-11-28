@@ -68,8 +68,8 @@ def run():
             st.write('path: ',image_path)
             results = model(image_path)
             
-            class_names = getattr(results, 'names', None)
-            st.write("class_names: ", class_names)
+            prediction_list = getattr(results, 'pred', None)
+            st.write("prediction_list: ", prediction_list)
 
       except Exception as e:
             st.write("Error loading model:", e)
