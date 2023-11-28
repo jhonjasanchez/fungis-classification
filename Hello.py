@@ -94,7 +94,15 @@ def run():
                 for idx in keep:
                     box = tuple(map(int, boxes[idx]))
                     conf = scores[idx]
-                    label = f"Confidence: {conf:.2f}"
+                    class_index = int(class_indices[idx])
+                    class_name = ''
+                    if class_index == 0:
+                        class_name = 'Comestible'
+                    if class_index == 1:
+                        class_name = 'No comestible'
+                    if class_index == 2:
+                        class_name = 'Venenoso'
+                    label = f"{class_name} Confidence: {conf:.2f}"
                     draw.rectangle(box, outline="red", width=3)
                     draw.text((box[0], box[1]), label, fill="red")
 
