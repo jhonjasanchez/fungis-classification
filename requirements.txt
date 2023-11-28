@@ -6,4 +6,4 @@ streamlit
 joblib
 torch
 opencv-python-headless
-ultralytics==0.0.6
+ultralytics
