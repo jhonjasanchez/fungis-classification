@@ -49,12 +49,15 @@ def run():
 
     if st.button("Clasificar !!!"):
       # Ruta al modelo entrenado
-      model_path = "yolov5s.pt"
+      model_path = "best.pt"
 
       # Cargar el modelo
       try:
-            model = torch.load(model_path)
+            model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
             st.write("Model loaded successfully.")
+            #with torch.no_grad():
+            #    resultado = model(uploaded_file)
+            #st.write("Valor de results: ",resultado)
       except Exception as e:
             st.write("Error loading model:", e)
 
