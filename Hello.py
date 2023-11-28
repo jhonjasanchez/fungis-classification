@@ -7,29 +7,21 @@
 
 import streamlit as st
 import torch
-from PIL import Image, ImageDraw
-from torchvision.transforms import functional as F
-from yolov5.utils.general import non_max_suppression
-
 
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
-# Function to perform YOLOv5 inference on an image
-def inference(image, model):
-    img_tensor = F.to_tensor(image).unsqueeze(0)
-    
-    # Perform inference
-    with torch.no_grad():
-        results = model(img_tensor)
+def save_uploaded_image(uploaded_image):
+    # Save the uploaded image to a temporary file and return the file path
+    with st.spinner("Saving uploaded image..."):
+        image_bytes = uploaded_image.read()
+        image_path = f"temp/{uploaded_image.name}"
+        
+        with open(image_path, "wb") as temp_image:
+            temp_image.write(image_bytes)
 
-    # Process the YOLOv5 model output
-    results = non_max_suppression(results[0], conf_thres=0.5, iou_thres=0.4)
-    
-    return results[0] if results else None
-
-
+    return image_path
 
 def run():
     st.set_page_config(
@@ -72,11 +64,9 @@ def run():
       try:
             model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
             st.write("Model loaded successfully.")
-            image = Image.open(uploaded_file).convert("RGB")
-            results = inference(image)
-
-             # Display the original image
-            st.image(image, caption="Original Image", use_column_width=True)
+            image_path = save_uploaded_image(uploaded_file)
+            st.write('path: ',image_path)
+            results = model(image_path)
 
       except Exception as e:
             st.write("Error loading model:", e)
