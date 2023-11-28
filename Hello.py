@@ -9,8 +9,7 @@ import streamlit as st
 import torch
 from PIL import Image, ImageDraw
 from torchvision.transforms import functional as F
-from yolov5.models.experimental import attempt_load
-from yolov5.utils.general import non_max_suppression, scale_coords
+from yolov5.utils.general import non_max_suppression
 from yolov5.utils.plots import plot_one_box
 
 from streamlit.logger import get_logger
