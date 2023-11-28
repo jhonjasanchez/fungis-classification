@@ -90,7 +90,7 @@ def run():
 
                 # Iterate through the kept indices and draw bounding boxes
                 for idx in keep:
-                    box = boxes[idx]
+                    box = tuple(map(int, boxes[idx]))
                     conf = scores[idx]
                     label = f"Confidence: {conf:.2f}"
                     draw.rectangle(box, outline="red", width=3)
