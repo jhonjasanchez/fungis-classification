@@ -75,8 +75,8 @@ def run():
             conf_threshold = 0.5
             iou_threshold = 0.4
 
-            boxes = results.xyxy[0][:, :4]
-            scores = results.xyxy[0][:, 4]
+            boxes = results.xyxy[0][:, :4].cpu()
+            scores = results.xyxy[0][:, 4].cpu()
             keep = nms(boxes, scores, iou_threshold)
             st.write('boxes: ', boxes)
 
