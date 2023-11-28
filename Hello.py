@@ -68,13 +68,8 @@ def run():
             st.write('path: ',image_path)
             results = model(image_path)
             
-            # Use dir() to inspect attributes
-            attributes = dir(results)
-
-            # Print the attributes
-            st.write("Attributes of results:")
-            for attribute in attributes:
-                st.write(getattr(results, attribute, None))
+            class_names = getattr(results, 'names', None)
+            st.write("class_names: ", class_names)
 
       except Exception as e:
             st.write("Error loading model:", e)
