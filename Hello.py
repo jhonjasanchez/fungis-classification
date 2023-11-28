@@ -55,7 +55,7 @@ def run():
       try:
             model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
             st.write("Model loaded successfully.")
-            results = model('/workspaces/fungis-classification/0.png')
+            results = model('0.png')
             # Mostrar la imagen con las detecciones
             results.show()
       except Exception as e:
