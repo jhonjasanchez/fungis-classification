@@ -6,13 +6,39 @@
 # Jhon Jairo Sánchez
 
 import streamlit as st
-import joblib
 import torch
+from PIL import Image, ImageDraw
+from torchvision.transforms import functional as F
+from yolov5.models.experimental import attempt_load
+from yolov5.utils.general import non_max_suppression, scale_coords
+from yolov5.utils.plots import plot_one_box
 
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
+# Function to perform YOLOv5 inference on an image
+def inference(image, model):
+    img_tensor = F.to_tensor(image).unsqueeze(0)
+    
+    # Perform inference
+    with torch.no_grad():
+        results = model(img_tensor)
+
+    # Process the YOLOv5 model output
+    results = non_max_suppression(results[0], conf_thres=0.5, iou_thres=0.4)
+    
+    return results[0] if results else None
+
+# Function to draw bounding boxes on the image
+def draw_boxes(image, boxes):
+    draw = ImageDraw.Draw(image)
+
+    for box in boxes:
+        label = int(box[5])
+        plot_one_box(box, draw, label=label, color='red')
+
+    return image
 
 def run():
     st.set_page_config(
@@ -55,9 +81,18 @@ def run():
       try:
             model = torch.hub.load("ultralytics/yolov5:master", "custom", path=model_path)
             st.write("Model loaded successfully.")
-            results = model('0.png')
-            # Mostrar la imagen con las detecciones
-            results.show()
+            image = Image.open(uploaded_file).convert("RGB")
+            results = inference(image)
+
+             # Display the original image
+            st.image(image, caption="Original Image", use_column_width=True)
+
+            if results:
+                # Draw bounding boxes on the image
+                image_with_boxes = draw_boxes(image.copy(), results[:, :5])
+                st.image(image_with_boxes, caption="Image with Bounding Boxes", use_column_width=True)
+
+
       except Exception as e:
             st.write("Error loading model:", e)
 
