@@ -68,20 +68,13 @@ def run():
             st.write('path: ',image_path)
             results = model(image_path)
             
-            image_list = results.imgs
-            prediction_list = results.pred
-            file_list = results.files
-            time_info = results.times
-            class_names = results.names
-            shape_info = results.shape
+            # Use dir() to inspect attributes
+            attributes = dir(results)
 
-            # Print or use the extracted information
-            st.write("Image List:", image_list)
-            st.write("Prediction List:", prediction_list)
-            st.write("File List:", file_list)
-            st.write("Time Information:", time_info)
-            st.write("Class Names:", class_names)
-            st.write("Shape Information:", shape_info)
+            # Print the attributes
+            print("Attributes of results:")
+            for attribute in attributes:
+                print(attribute)
 
       except Exception as e:
             st.write("Error loading model:", e)
