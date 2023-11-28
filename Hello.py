@@ -16,7 +16,7 @@ def save_uploaded_image(uploaded_image):
     # Save the uploaded image to a temporary file and return the file path
     with st.spinner("Saving uploaded image..."):
         image_bytes = uploaded_image.read()
-        image_path = f"temp/{uploaded_image.name}"
+        image_path = f"{uploaded_image.name}"
         
         with open(image_path, "wb") as temp_image:
             temp_image.write(image_bytes)
