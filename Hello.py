@@ -67,7 +67,21 @@ def run():
             image_path = save_uploaded_image(uploaded_file)
             st.write('path: ',image_path)
             results = model(image_path)
-            st.write(type(results))
+            
+            image_list = results.imgs
+            prediction_list = results.pred
+            file_list = results.files
+            time_info = results.times
+            class_names = results.names
+            shape_info = results.shape
+
+            # Print or use the extracted information
+            st.write("Image List:", image_list)
+            st.write("Prediction List:", prediction_list)
+            st.write("File List:", file_list)
+            st.write("Time Information:", time_info)
+            st.write("Class Names:", class_names)
+            st.write("Shape Information:", shape_info)
 
       except Exception as e:
             st.write("Error loading model:", e)
