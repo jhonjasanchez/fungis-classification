@@ -8,7 +8,6 @@
 import streamlit as st
 import torch
 
-
 from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
@@ -70,6 +69,9 @@ def run():
             results = model(image_path)
             
             st.write(results)
+
+            boxes = results.xyxy[0][:, :4]
+            st.write('boxes: ', boxes)
 
             #prediction_list = getattr(results, 'pred', None)
             #st.write("prediction_list: ", prediction_list)
