@@ -77,8 +77,10 @@ def run():
 
             boxes = results.xyxy[0][:, :4].cpu()
             scores = results.xyxy[0][:, 4].cpu()
+            class_indices = results.xyxy[0][:, 5].cpu()
             keep = nms(boxes, scores, iou_threshold)
             st.write('boxes: ', boxes)
+            st.write('class_indices: ', class_indices)
 
             original_image = Image.open(image_path).convert("RGB")
 
