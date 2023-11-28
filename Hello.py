@@ -72,9 +72,9 @@ def run():
             attributes = dir(results)
 
             # Print the attributes
-            print("Attributes of results:")
+            st.write("Attributes of results:")
             for attribute in attributes:
-                print(attribute)
+                st.write(attribute)
 
       except Exception as e:
             st.write("Error loading model:", e)
