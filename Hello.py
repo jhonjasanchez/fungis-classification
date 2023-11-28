@@ -67,14 +67,9 @@ def run():
             image_path = save_uploaded_image(uploaded_file)
             st.write('path: ',image_path)
             results = model(image_path)
-            st.write(results)
+            st.write(results[0])
 
-            for detection in results:
-                bbox = detection[:4]  # Extract bounding box coordinates
-                confidence = detection[4]  # Extract confidence score
-                class_label = int(detection[5])  # Extract class label
-
-                st.write(f"Bounding Box: {bbox}, Confidence: {confidence}, Class Label: {class_label}")
+            
 
 
       except Exception as e:
